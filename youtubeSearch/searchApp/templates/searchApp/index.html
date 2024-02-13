@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Youtube Search</title>
+</head>
+<body>
+    <form method="post">
+        {%csrf_token%}
+        <input name="query" value="{{ query }}" type="text">
+        <input type="submit">
+    </form>
+
+    {% if results %}
+    {% for result in results %}
+        <a href="https://youtube.com/embed/{{result.0}}"><div>
+            <h2>{{result.1}}</h2>
+            <img src="{{result.2}}">
+            <h4>by {{result.3}}</h4>
+            <hr>
+        </div></a>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
